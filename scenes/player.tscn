@@ -1,10 +1,11 @@
-[gd_scene load_steps=34 format=3 uid="uid://db4og3505qeyh"]
+[gd_scene load_steps=40 format=3 uid="uid://db4og3505qeyh"]
 
 [ext_resource type="Texture2D" uid="uid://r5t4rk3w6mpq" path="res://Pixel Adventure 1/Free/Main Characters/Ninja Frog/Fall (32x32).png" id="1_153d6"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_ieyty"]
 [ext_resource type="Texture2D" uid="uid://cnkg124cgqjm4" path="res://Pixel Adventure 1/Free/Main Characters/Ninja Frog/Idle (32x32).png" id="1_jwbfy"]
 [ext_resource type="Texture2D" uid="uid://dll2wujgddkd" path="res://Pixel Adventure 1/Free/Main Characters/Ninja Frog/Run (32x32).png" id="2_ba6tq"]
 [ext_resource type="Texture2D" uid="uid://b0m5yvymcmvf8" path="res://Pixel Adventure 1/Free/Main Characters/Ninja Frog/Jump (32x32).png" id="2_wuccl"]
+[ext_resource type="Texture2D" uid="uid://b6t70kkgtgb5s" path="res://Pixel Adventure 1/Free/Main Characters/Ninja Frog/Wall Jump (32x32).png" id="6_1j1g3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_esef5"]
 atlas = ExtResource("1_153d6")
@@ -110,6 +111,26 @@ region = Rect2(352, 0, 32, 32)
 atlas = ExtResource("2_wuccl")
 region = Rect2(0, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_jvbt7"]
+atlas = ExtResource("6_1j1g3")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7d2sj"]
+atlas = ExtResource("6_1j1g3")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdhtn"]
+atlas = ExtResource("6_1j1g3")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r55rf"]
+atlas = ExtResource("6_1j1g3")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mj5ka"]
+atlas = ExtResource("6_1j1g3")
+region = Rect2(128, 0, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_oqyln"]
 animations = [{
 "frames": [{
@@ -209,6 +230,26 @@ animations = [{
 "loop": true,
 "name": &"run",
 "speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jvbt7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7d2sj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sdhtn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r55rf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mj5ka")
+}],
+"loop": true,
+"name": &"wall",
+"speed": 5.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ypx5o"]
@@ -222,7 +263,7 @@ script = ExtResource("1_ieyty")
 position = Vector2(12.875, -9.62496)
 scale = Vector2(1.94532, 1.64844)
 sprite_frames = SubResource("SpriteFrames_oqyln")
-animation = &"run"
+animation = &"wall"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
