@@ -1,6 +1,7 @@
-[gd_scene load_steps=32 format=3 uid="uid://cbxc3mtnko7f8"]
+[gd_scene load_steps=33 format=3 uid="uid://cbxc3mtnko7f8"]
 
 [ext_resource type="Texture2D" uid="uid://dx15h5mmmv6x0" path="res://assits/Main Characters/Virtual Guy/Fall (32x32).png" id="1_3uxua"]
+[ext_resource type="Script" path="res://scripts/player_2.gd" id="1_x2clf"]
 [ext_resource type="Texture2D" uid="uid://cbv5tm64bbrv0" path="res://assits/Main Characters/Virtual Guy/Idle (32x32).png" id="1_xymds"]
 [ext_resource type="Texture2D" uid="uid://b552hy7o5yqp4" path="res://assits/Main Characters/Virtual Guy/Jump (32x32).png" id="3_wn35o"]
 [ext_resource type="Texture2D" uid="uid://cxxltbvw5s774" path="res://assits/Main Characters/Virtual Guy/Run (32x32).png" id="4_rgsdf"]
@@ -200,21 +201,22 @@ animations = [{
 }],
 "loop": true,
 "name": &"run",
-"speed": 5.0
+"speed": 15.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dea50"]
 radius = 22.0907
 
 [node name="player_2" type="CharacterBody2D"]
+script = ExtResource("1_x2clf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(14, 14)
 scale = Vector2(1.875, 1.875)
 sprite_frames = SubResource("SpriteFrames_hg3h1")
-animation = &"run"
+animation = &"fall"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(16, 22)
+position = Vector2(15, 17)
 shape = SubResource("CircleShape2D_dea50")
