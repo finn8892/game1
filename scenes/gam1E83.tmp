@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://bno577cv1eb50"]
+[gd_scene load_steps=9 format=3 uid="uid://bno577cv1eb50"]
 
 [ext_resource type="PackedScene" uid="uid://db4og3505qeyh" path="res://scenes/player.tscn" id="1_0m08m"]
+[ext_resource type="Script" path="res://scenes/game.gd" id="1_ksr6g"]
 [ext_resource type="Texture2D" uid="uid://bj8g02rtwom3h" path="res://Pixel Adventure 1/Free/Terrain/Terrain (16x16).png" id="2_4s6gp"]
 [ext_resource type="PackedScene" uid="uid://cbxc3mtnko7f8" path="res://scenes/player_2.tscn" id="3_0gbju"]
 
@@ -463,6 +464,24 @@ distance = -187.246
 
 [node name="game" type="Node2D"]
 position = Vector2(28, 21)
+script = ExtResource("1_ksr6g")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(3, -255)
+zoom = Vector2(0.6, 0.6)
+
+[node name="Label" type="Label" parent="Camera2D"]
+offset_left = -178.0
+offset_top = -431.0
+offset_right = 111.0
+offset_bottom = -341.0
+text = "gang"
+
+[node name="Timer" type="Timer" parent="Camera2D"]
+process_callback = 0
+wait_time = 60.0
+one_shot = true
+autostart = true
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_ybhxq")
@@ -491,6 +510,4 @@ position = Vector2(-1, -80)
 [node name="player_2" parent="Players" instance=ExtResource("3_0gbju")]
 position = Vector2(-20, -144)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(3, -255)
-zoom = Vector2(0.6, 0.6)
+[connection signal="timeout" from="Camera2D/Timer" to="." method="_on_timer_timeout"]
